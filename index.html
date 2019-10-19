@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>THE ROCK, PAPER, SCISSORS APPLICATION</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script type="text/javascript">
+		function ProcessMove(playerMove){
+			randomNo = 1 + Math.random()*2;
+			randomNo = Math.round(randomNo);
+			if (randomNo==1) computerMove="Rock";
+			if (randomNo==2) computerMove="Paper";
+			if (randomNo==3) computerMove="Scissors";
+
+			switch(computerMove){
+				case "Rock":
+					if(playerMove=="Rock"){
+						document.getElementById('Msg').innerHTML = "You tie";
+					}
+					if (playerMove=="Paper") {
+						document.getElementById('Msg').innerHTML = "You win";
+					}
+					if(playerMove=="Scissors"){
+						document.getElementById('Msg').innerHTML = "You lose";
+					}
+				break;
+				case "Paper":
+					if(playerMove=="Rock"){
+						document.getElementById('Msg').innerHTML = "You lose";
+					}
+					if(playerMove=="Paper"){
+						document.getElementById('Msg').innerHTML = "You tie";
+					}
+					if(playerMove=="Scissors"){
+						document.getElementById('Msg').innerHTML = "You win";
+					}
+				break;
+				case "Scissors":
+					if(playerMove=="Rock"){
+						document.getElementById('Msg').innerHTML = "You win";
+					}
+					if(playerMove=="Paper"){
+						document.getElementById('Msg').innerHTML = "You lose";
+					}
+					if(playerMove=="Scissors"){
+						document.getElementById('Msg').innerHTML = "You tie";
+					}
+				break;
+			}
+			document.getElementById('Cmove').innerHTML = computerMove;
+			document.getElementById('Pmove').innerHTML = playerMove;
+
+		}
+	</script>
+</head>
+<body><!--display a form that will display three button controls labeled Rock, Paper,
+and Scissors. The player will click on these buttons when playing the game in order to submit
+moves. add the form to the HTML page, along with a descriptive heading-->
+<div class="col-md-10 jumbotron mx-auto text-center mt-4">
+	<h1>Click on the button to submit a move</h1>
+	<form>
+		<input type="button" class="btn btn-lg btn-info mx-3" value="Rock"  onclick="ProcessMove('Rock')">
+		<input type="button" class="btn btn-lg btn-success mx-3" value="Paper"  onclick="ProcessMove('Paper')">
+		<input type="button" class="btn btn-lg btn-danger mx-3" value="Scissors" onclick="ProcessMove('Scissors')">
+	</form>
+	<!--Create a template for displaying Output-->
+	<div class="row mt-3">
+		<div class="col-md-4">
+			<p><b>Computer Move: <span class="text-primary" id="Cmove"></span></b></p>
+		</div>
+		<div class="col-md-4">
+			<p><b>Player Move: <span class="text-secondary" id="Pmove"></span></b></p>
+		</div>
+		<div class="col-md-4">
+			<p><b>Results: <span class="text-warning" id="Msg"></span></b></p>
+		</div>
+		
+	</div>
+</div>
+</body>
+</html>
